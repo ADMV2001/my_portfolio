@@ -1,35 +1,47 @@
+import {
+  SiJavascript, SiTypescript, SiPython, SiCplusplus,
+  SiReact, SiNodedotjs, SiMongodb, SiPostgresql, SiDocker, SiNextdotjs
+} from "react-icons/si";
+
 export default function SkillsSection() {
   const languages = [
-    { name: "JavaScript", level: 90 },
-    { name: "TypeScript", level: 85 },
-    { name: "Python", level: 75 },
-    { name: "Java", level: 70 },
-    { name: "C++", level: 65 },
-  ]
+    { name: "JavaScript", icon: <SiJavascript /> },
+    { name: "TypeScript", icon: <SiTypescript /> },
+    { name: "Python", icon: <SiPython /> },
+    { name: "C++", icon: <SiCplusplus /> },
+  ];
 
   const tools = [
-    { name: "React", level: 85 },
-    { name: "Node.js", level: 80 },
-    { name: "MongoDB", level: 70 },
-    { name: "PostgreSQL", level: 75 },
-    { name: "Docker", level: 65 },
-    { name: "AWS", level: 60 },
-  ]
-
+    { name: "React", icon: <SiReact /> },
+    { name: "Next.js", icon: <SiNextdotjs /> },
+    { name: "Node.js", icon: <SiNodedotjs /> },
+    { name: "MongoDB", icon: <SiMongodb /> },
+    { name: "PostgreSQL", icon: <SiPostgresql /> },
+    { name: "Docker", icon: <SiDocker /> },
+  ];
+  
   const education = [
     {
-      institution: "University of Colombo",
-      degree: "Bachelor of Science in Computer Science",
-      years: "2020 - 2024",
-      grade: "First Class Honours",
+      institution: "NSBM Green University",
+      degree: "BSc (Hons) in Software Engineering",
+      years: "2023 - Present",
+      grade: "Following",
     },
     {
-      institution: "Royal College Colombo",
+      institution: "President's College, Horana",
       degree: "Advanced Level - Physical Science Stream",
-      years: "2017 - 2019",
-      grade: "3A passes",
+      years: "2018 - 2020",
+      grade: "G.C.E. Advanced Level",
     },
-  ]
+  ];
+
+  // A helper component for each skill card
+  const SkillCard = ({ icon, name }) => (
+    <div className="flex flex-col items-center justify-center p-4 bg-gray-800 rounded-xl transition-transform duration-300 hover:scale-105 hover:bg-gray-700">
+      <div className="text-xl text-gray-300 mb-2">{icon}</div>
+      <span className="text-white text-[15px] text-center">{name}</span>
+    </div>
+  );
 
   return (
     <section id="skills" className="py-20 px-6 bg-black">
@@ -38,48 +50,29 @@ export default function SkillsSection() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Languages */}
-          <div className="bg-gray-900 rounded-lg p-8 border border-gray-700">
-            <h3 className="text-2xl font-bold mb-6 text-[#AAFF00]">Languages</h3>
-            <div className="space-y-6">
+          <div className="bg-gradient-to-t from-black to-gray-900 rounded-[25px] p-8 border border-gray-700">
+            <h3 className="text-2xl font-bold mb-8 text-[#AAFF00] text-center">Languages</h3>
+            {/* This is the new responsive grid for icons */}
+            <div className="grid grid-cols-3 sm:grid-cols-4 gap-6">
               {languages.map((skill, index) => (
-                <div key={index} className="space-y-2">
-                  <div className="flex justify-between">
-                    <span className="font-medium text-white">{skill.name}</span>
-                    <span className="text-[#AAFF00]">{skill.level}%</span>
-                  </div>
-                  <div className="w-full bg-gray-700 rounded-full h-2">
-                    <div
-                      className="bg-[#AAFF00] h-2 rounded-full transition-all duration-1000"
-                      style={{ width: `${skill.level}%` }}
-                    />
-                  </div>
-                </div>
+                <SkillCard key={index} icon={skill.icon} name={skill.name} />
               ))}
             </div>
           </div>
 
           {/* Tools & Technologies */}
-          <div className="bg-gray-900 rounded-lg p-8 border border-gray-700">
-            <h3 className="text-2xl font-bold mb-6 text-[#AAFF00]">Tools & Technologies</h3>
-            <div className="space-y-6">
+          <div className="bg-gradient-to-t from-black to-gray-900 rounded-[25px] p-8 border border-gray-700">
+            <h3 className="text-2xl font-bold mb-8 text-[#AAFF00] text-center">Tools & Technologies</h3>
+            {/* This is the new responsive grid for icons */}
+            <div className="grid grid-cols-3 sm:grid-cols-4 gap-6">
               {tools.map((skill, index) => (
-                <div key={index} className="space-y-2">
-                  <div className="flex justify-between">
-                    <span className="font-medium text-white">{skill.name}</span>
-                    <span className="text-[#AAFF00]">{skill.level}%</span>
-                  </div>
-                  <div className="w-full bg-gray-700 rounded-full h-2">
-                    <div
-                      className="bg-[#AAFF00] h-2 rounded-full transition-all duration-1000"
-                      style={{ width: `${skill.level}%` }}
-                    />
-                  </div>
-                </div>
+                <SkillCard key={index} icon={skill.icon} name={skill.name} />
               ))}
             </div>
           </div>
         </div>
 
+        {/* Education Section remains the same */}
         <div className="bg-gray-900 rounded-lg p-8 border border-gray-700">
           <h3 className="text-2xl font-bold mb-8 text-[#AAFF00] text-center">Education</h3>
           <div className="space-y-8">
@@ -97,5 +90,5 @@ export default function SkillsSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

@@ -22,13 +22,13 @@ export default function Header({ activeSection, scrollToSection }: HeaderProps) 
             <div className="w-8 h-8 bg-[#AAFF00] rounded-full flex items-center justify-center">
               <span className="text-black font-bold text-sm">M</span>
             </div>
-            <span className="font-semibold text-white text-[20px]">Minula Vihanaga | Portfolio</span>
+            <span className="font-semibold text-white text-[20px]">Minula Vihanga</span>
           </button>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8">
             {[
-              { name: "Home", id: "home" },
+              { name: "Home", id: "home" }, 
               { name: "About", id: "about" },
               { name: "Projects", id: "projects" },
               { name: "Skills", id: "skills" },
