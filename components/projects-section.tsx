@@ -90,14 +90,14 @@ export default function ProjectsSection() {
                 onClick={() => handleProjectClick(project)}
                 className="relative group cursor-pointer rounded-2xl bg-gradient-to-t from-black to-gray-900 border-gray-400 
                           backdrop-blur-md p-6 shadow-lg transition-all duration-300 
-                           hover:border-[#AAFF00]/50"
+                           hover:border-[#81E7AF]/50"
               >
                 {/* Title + Icon */}
                 <div className="flex w-[300px] items-center justify-between mb-4">
-                  <h3 className="text-lg font-semibold text-white transition-colors group-hover:text-[#AAFF00]">
+                  <h3 className="text-lg font-semibold text-white transition-colors group-hover:text-[#81E7AF]">
                     {project.title}
                   </h3>
-                  <ExternalLink className="absolute top-3 right-3 w-5 h-5 text-gray-400 group-hover:text-[#AAFF00] transition-colors" />
+                  <ExternalLink className="absolute top-3 right-3 w-5 h-5 text-gray-400 group-hover:text-[#81E7AF] transition-colors" />
                 </div>
                 
 
@@ -112,7 +112,7 @@ export default function ProjectsSection() {
                     <span
                       key={techIndex}
                       className="px-3 py-1 text-xs font-medium rounded-full 
-                                bg-[#AAFF00] text-black border border-[#AAFF00]/20
+                                bg-[#81E7AF] text-black border border-[#81E7AF]/20
                                 group-hover:bg-gray-200 group-hover:text-black 
                                 transition-colors"
                     >

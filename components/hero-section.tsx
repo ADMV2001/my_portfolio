@@ -46,11 +46,11 @@ export default function HeroSection() {
             {/* Contact Info */}
             <div className="space-y-4">
               <div className="flex items-center space-x-4 text-gray-300 text-lg">
-                <Mail className="w-6 h-6 text-[#AAFF00]" />
+                <Mail className="w-6 h-6 text-[#81E7AF]" />
                 <span>minulavihanga70@gmail.com</span>
               </div>
               <div className="flex items-center space-x-4 text-gray-300 text-lg">
-                <MapPin className="w-6 h-6 text-[#AAFF00]" />
+                <MapPin className="w-6 h-6 text-[#81E7AF]" />
                 <span>Horana, Sri Lanka</span>
               </div>
             </div>
@@ -60,14 +60,14 @@ export default function HeroSection() {
               <a
                 href="/Minula_Vihanga_Resume.pdf"
                 download="Minula_Vihanga_Resume.pdf"
-                className="w-full bg-[#AAFF00] text-black font-semibold py-5 px-8 rounded-[20px] hover:bg-white transition-colors flex items-center justify-center space-x-3 cursor-pointer"
+                className="w-full bg-[#81E7AF] text-black font-semibold py-5 px-8 rounded-[20px] hover:bg-white transition-colors flex items-center justify-center space-x-3 cursor-pointer"
               >
                 <Download className="w-6 h-6" />
                 <span className="text-lg">Download Resume</span>
               </a>
               <button
                 onClick={openModal}
-                className="w-full border-2 border-[#AAFF00] text-[#AAFF00] font-semibold py-5 px-8 rounded-[20px] hover:bg-white hover:border-0 hover:text-black transition-colors text-lg cursor-pointer hidden md:block"
+                className="w-full border-2 border-[#81E7AF] text-[#81E7AF] font-semibold py-5 px-8 rounded-[20px] hover:bg-white hover:border-0 hover:text-black transition-colors text-lg cursor-pointer hidden md:block"
               >
                 <span>Preview Resume</span>
               </button>
@@ -79,7 +79,7 @@ export default function HeroSection() {
         <div className="space-y-8 flex flex-col justify-center">
           <div className="text-5xl md:text-7xl font-bold text-center lg:text-left">
             <span className="text-white">Hi, I'm </span>
-            <span className="text-[#AAFF00]">Minula</span>
+            <span className="text-[#81E7AF]">Minula</span>
           </div>
           
 

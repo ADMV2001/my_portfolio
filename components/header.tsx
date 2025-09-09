@@ -19,8 +19,8 @@ export default function Header({ activeSection, scrollToSection }: HeaderProps) 
             onClick={() => scrollToSection("home")}
             className="flex items-center space-x-3"
           >
-            <div className="w-8 h-8 bg-[#AAFF00] rounded-full flex items-center justify-center">
-              <span className="text-black font-bold text-sm">M</span>
+            <div className="w-8 h-8 bg-[#81E7AF] rounded-full flex items-center justify-center">
+              <span className="text-black font-bold text-sm">MV</span>
             </div>
             <span className="font-semibold text-white text-[20px]">Minula Vihanga</span>
           </button>
@@ -37,8 +37,8 @@ export default function Header({ activeSection, scrollToSection }: HeaderProps) 
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`text-sm font-medium transition-colors hover:text-[#AAFF00] text-[15px] cursor-pointer ${
-                  activeSection === item.id ? "text-[#AAFF00]" : "text-white"
+                className={`text-sm font-medium transition-colors hover:text-[#81E7AF] text-[15px] cursor-pointer ${
+                  activeSection === item.id ? "text-[#81E7AF]" : "text-white"
                 }`}
               >
                 {item.name}
@@ -50,7 +50,7 @@ export default function Header({ activeSection, scrollToSection }: HeaderProps) 
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-white hover:text-[#AAFF00] transition-colors cursor-pointer"
+              className="text-white hover:text-[#81E7AF] transition-colors cursor-pointer"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -75,8 +75,8 @@ export default function Header({ activeSection, scrollToSection }: HeaderProps) 
                   scrollToSection(item.id)
                   setIsMenuOpen(false) // Close menu on click
                 }}
-                className={`text-sm font-medium transition-colors hover:text-[#AAFF00] text-[15px] cursor-pointer ${
-                  activeSection === item.id ? "text-[#AAFF00]" : "text-white"
+                className={`text-sm font-medium transition-colors hover:text-[#81E7AF] text-[15px] cursor-pointer ${
+                  activeSection === item.id ? "text-[#81E7AF]" : "text-white"
                 }`}
               >
                 {item.name}

@@ -39,7 +39,7 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
       <div className="bg-gradient-to-t from-black to-gray-900 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-gray-700">
         <div className="flex justify-between items-center p-6 border-b border-gray-700">
-          <h2 className="text-3xl font-bold text-[#AAFF00]">{project.title}</h2>
+          <h2 className="text-3xl font-bold text-[#81E7AF]">{project.title}</h2>
           <button onClick={onClose} className="text-gray-400 hover:text-white transition-colors p-2">
             <X className="w-6 h-6" />
           </button>
@@ -48,7 +48,7 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
         <div className="p-6 space-y-6">
           {/* Role */}
           <div>
-            <h3 className="text-lg font-semibold text-[#AAFF00] mb-2">My Role : <span className="text-gray-300">{project.role}</span></h3>
+            <h3 className="text-lg font-semibold text-[#81E7AF] mb-2">My Role : <span className="text-gray-300">{project.role}</span></h3>
             
           </div>
 
@@ -63,7 +63,7 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
 
           {/* Description */}
           <div>
-            <h3 className="text-lg font-semibold text-[#AAFF00] mb-2">Description</h3>
+            <h3 className="text-lg font-semibold text-[#81E7AF] mb-2">Description</h3>
             <p className="text-gray-300 leading-relaxed">{project.description}</p>
           </div>
 
@@ -85,7 +85,7 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
               href={project.liveLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center space-x-2 bg-[#AAFF00] text-black font-semibold py-3 px-6 rounded-lg hover:bg-[#caff5f] transition-colors"
+              className="inline-flex items-center space-x-2 bg-[#81E7AF] text-black font-semibold py-3 px-6 rounded-lg hover:bg-[#caff5f] transition-colors"
             >
               <span>Live Demo</span>
               <ExternalLink className="w-5 h-5" />
@@ -95,7 +95,7 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
 
           {/* Technologies */}
           <div>
-            <h3 className="text-lg font-semibold text-[#AAFF00] mb-3">Technologies Used</h3>
+            <h3 className="text-lg font-semibold text-[#81E7AF] mb-3">Technologies Used</h3>
             <div className="flex flex-wrap gap-2">
               {project.technologies.map((tech, index) => (
                 <span key={index} className="bg-gray-300 text-black px-3 py-1 rounded-full text-sm font-medium">
@@ -107,7 +107,7 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
 
           {/* Tools */}
           <div>
-            <h3 className="text-lg font-semibold text-[#AAFF00] mb-3">Tools Used</h3>
+            <h3 className="text-lg font-semibold text-[#81E7AF] mb-3">Tools Used</h3>
             <div className="flex flex-wrap gap-2">
               {project.tools.map((tool, index) => (
                 <span
