@@ -1,9 +1,9 @@
-// In components/ChatModal.tsx
 "use client"
 
 import { useState, useRef, useEffect, Fragment } from "react";
 import { Dialog, Transition } from '@headlessui/react';
 import { X, Send, Bot, User } from 'lucide-react';
+import ReactMarkdown from 'react-markdown'; // 1. Import ReactMarkdown
 
 interface Message {
   role: 'user' | 'model';
@@ -22,42 +22,22 @@ export default function ChatModal({ isOpen, onClose }: { isOpen: boolean, onClos
 
   useEffect(scrollToBottom, [messages]);
   
-  // Handle the very first message when the modal opens
+  // 2. MODIFIED: Handle the initial greeting instantly on the frontend
   useEffect(() => {
-  if (isOpen && messages.length === 0) {
-    setIsLoading(true);
-    fetch('/api/chat', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ history: [], message: "Hello" }),
-    })
-    .then(res => {
-      if (!res.ok) {
-        // If the server response is not OK, throw an error to be caught
-        throw new Error('API response was not ok.');
-      }
-      return res.json();
-    })
-    .then(data => {
-      setMessages([{ role: 'model', parts: [{ text: data.text }] }]);
-    })
-    .catch(error => {
-      // Log the error and show a message to the user
-      console.error("Failed to get initial greeting:", error);
-      setMessages([{ role: 'model', parts: [{ text: "Sorry, I can't connect right now. Please try again later." }] }]);
-    })
-    .finally(() => {
-      // This part ALWAYS runs, ensuring the input is re-enabled
-      setIsLoading(false);
-    });
-  }
-}, [isOpen, messages.length]);
+    if (isOpen && messages.length === 0) {
+      setMessages([{ 
+        role: 'model', 
+        parts: [{ text: "Hi there! I'm Minula's Personal Assistant. Ask me anything about Minula's skills, education, or projects." }] 
+      }]);
+    }
+  }, [isOpen, messages.length]);
 
-    useEffect(() => {
-  if (!isOpen) {
-    setMessages([]);
-  }
-}, [isOpen]);
+  // This effect resets the chat when the modal is closed
+  useEffect(() => {
+    if (!isOpen) {
+      setMessages([]);
+    }
+  }, [isOpen]);
 
   const handleSend = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -110,8 +90,9 @@ export default function ChatModal({ isOpen, onClose }: { isOpen: boolean, onClos
                   {messages.map((msg, index) => (
                     <div key={index} className={`flex items-start gap-3 ${msg.role === 'user' ? 'justify-end' : ''}`}>
                       {msg.role === 'model' && <div className="w-8 h-8 flex-shrink-0 rounded-full bg-[#81E7AF] flex items-center justify-center"><Bot className="w-5 h-5 text-black" /></div>}
-                      <div className={`px-4 py-2 rounded-lg max-w-xs ${msg.role === 'user' ? 'bg-[#81E7AF] text-black' : 'bg-gray-700 text-white'}`}>
-                        {msg.parts[0].text}
+                      <div className={`prose prose-invert px-4 py-2 rounded-lg max-w-xs sm:max-w-sm md:max-w-md ${msg.role === 'user' ? 'bg-[#81E7AF] text-black prose-p:text-black prose-strong:text-black' : 'bg-gray-700 text-white'}`}>
+                        {/* 3. MODIFIED: Use ReactMarkdown to render the response */}
+                        <ReactMarkdown>{msg.parts[0].text}</ReactMarkdown>
                       </div>
                       {msg.role === 'user' && <div className="w-8 h-8 flex-shrink-0 rounded-full bg-gray-600 flex items-center justify-center"><User className="w-5 h-5 text-white" /></div>}
                     </div>
