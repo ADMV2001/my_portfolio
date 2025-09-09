@@ -34,11 +34,15 @@ export default function HeroSection() {
       id="home"
       className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden"
     >
+      {/* Background Video */}
+      
 
+      {/* Dark overlay for readability */}
+      <div className="absolute inset-0 bg-black/30 -z-10" />
 
       {/* Main Content */}
       <div className="pt-20 lg:pt-9 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
-        <div className="bg-gradient-to-b from-black/70 to-gray-900 rounded-[35px] p-12 w-full max-w-2xl">
+        <div className="rounded-[35px] p-12 w-full max-w-2xl">
           <div className="space-y-8">
             {/* Avatar and Info */}
             <div className="flex flex-col items-center text-center space-y-4">

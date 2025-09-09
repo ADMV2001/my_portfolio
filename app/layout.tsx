@@ -29,8 +29,9 @@ export default function RootLayout({
           playsInline
           className="fixed top-0 left-0 w-full h-full object-cover -z-10"
         >
-          <source src="/back1.mp4" type="video/mp4" />
+          <source src="/back.mp4" type="video/mp4" />
         </video>
+        <div className="absolute inset-0 bg-black/65 -z-10" />
         {children}
       </body>
     </html>

@@ -80,7 +80,7 @@ export default function ProjectsSection() {
 
   return (
     <>
-      <section id="projects" className="py-20 px-6 bg-black">
+      <section id="projects" className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold mb-12 text-center text-white">Projects</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -88,9 +88,10 @@ export default function ProjectsSection() {
               <div
                 key={index}
                 onClick={() => handleProjectClick(project)}
-                className="relative group cursor-pointer rounded-2xl bg-gradient-to-t from-black to-gray-900 border-gray-400 
-                          backdrop-blur-md p-6 shadow-lg transition-all duration-300 
-                           hover:border-[#81E7AF]/50"
+                className="relative group cursor-pointer rounded-2xl 
+           bg-white/5 backdrop-blur-xl border border-gray-700 
+           p-8 shadow-2xl shadow-black/50 transition-all duration-300 ease-in-out
+           hover:bg-white/10 hover:border-[#81E7AF] hover:border-[0.5px]"
               >
                 {/* Title + Icon */}
                 <div className="flex w-[300px] items-center justify-between mb-4">

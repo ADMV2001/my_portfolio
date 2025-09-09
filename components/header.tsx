@@ -10,7 +10,7 @@ export default function Header({ activeSection, scrollToSection }: HeaderProps) 
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-black">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-lg border-b border-white/10">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           
@@ -61,7 +61,7 @@ export default function Header({ activeSection, scrollToSection }: HeaderProps) 
 
         {/* Mobile Menu Dropdown */}
         {isMenuOpen && (
-          <div className="md:hidden flex flex-col items-center space-y-4 py-4 rounded-b-[20px] bg-gradient-to-b from-black to-gray-900">
+          <div className="md:hidden flex flex-col items-center space-y-4 py-4 rounded-b-[20px] bg-black/20 backdrop-blur-lg">
             {[
               { name: "Home", id: "home" },
               { name: "About", id: "about" },
