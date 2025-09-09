@@ -100,7 +100,7 @@ export default function SkillsSection() {
 };
 
   const SkillCard = ({ icon, name }: SkillCardProps) => (
-    <div className=" flex flex-col items-center justify-center p-4 rounded-full bg-gray-800/50 hover:bg-gray-700/70 shadow-sm hover:shadow-md transition-all duration-300">
+    <div className="w-[130px] flex flex-col items-center justify-center p-4 rounded-[25px] bg-gray-100/5 hover:bg-gray-700/70 shadow-sm hover:shadow-md transition-all duration-300">
       <div className="text-2xl text-[#81E7AF] mb-2">{icon}</div>
       <span className="text-gray-200 text-sm text-center">{name}</span>
     </div>
@@ -116,8 +116,8 @@ export default function SkillsSection() {
         {/* Skills in groups */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
           {skillGroups.map((group, idx) => (
-            <div key={idx} className="space-y-6 p-4 px-8 rounded-[35px] bg-gradient-to-t from-black to-gray-900">
-              <h3 className="text-[21px] font-semibold text-[#81E7AF] text-left ml-[10px] mb-8">
+            <div key={idx} className="space-y-6 p-6 px-8 py-8 rounded-[25px] bg-white/5 backdrop-blur-xl border border-gray-700 shadow-lg">
+              <h3 className="text-[21px] font-semibold text-gray-300 text-center ml-[10px] mb-8">
                 {group.title} 
               </h3>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
@@ -130,11 +130,11 @@ export default function SkillsSection() {
         </div>
 
         {/* Education (unchanged) */}
-        <div className="rounded-[35px] bg-gradient-to-t from-black to-gray-900 p-8 border border-gray-800 shadow-sm">
-          <h3 className="text-[22px] font-semibold mb-8 text-[#81E7AF] text-center">
+        <div className="rounded-[35px] bg-white/5 backdrop-blur-xl border border-gray-700 shadow-lg p-6 px-8 py-8">
+          <h3 className="text-[25px] font-semibold mb-14 text-gray-300 text-center">
             Education
           </h3>
-          <div className="space-y-8">
+          <div className="space-y-8 mb-8">
             {education.map((edu, index) => (
               <div
                 key={index}
