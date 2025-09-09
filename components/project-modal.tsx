@@ -1,7 +1,9 @@
 "use client"
 
 import { X, Github, ExternalLink } from "lucide-react"
-import { useEffect } from "react"
+import { useEffect, Fragment } from "react" // Import Fragment
+import { Dialog, Transition } from '@headlessui/react' // Import Dialog and Transition
+import Image from "next/image" // Import Next.js Image component
 
 interface Project {
   title: string
@@ -9,7 +11,7 @@ interface Project {
   image: string
   description: string
   githubLink: string
-  liveLink?: string   
+  liveLink?: string
   technologies: string[]
   tools: string[]
 }
@@ -21,6 +23,8 @@ interface ProjectModalProps {
 }
 
 export default function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
+  // useEffect for body overflow is no longer strictly necessary with Headless UI's Dialog,
+  // but keeping it here doesn't hurt and offers a fallback.
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden"
@@ -33,94 +37,140 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
     }
   }, [isOpen])
 
-  if (!isOpen || !project) return null 
+  if (!project) return null // Only render if project data is available
 
   return (
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
-      <div className="bg-gradient-to-t from-black to-gray-900 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto border border-gray-700">
-        <div className="flex justify-between items-center p-6 border-b border-gray-700">
-          <h2 className="text-3xl font-bold text-[#81E7AF]">{project.title}</h2>
-          <button onClick={onClose} className="text-gray-400 hover:text-white transition-colors p-2">
-            <X className="w-6 h-6" />
-          </button>
-        </div>
+    <Transition appear show={isOpen} as={Fragment}>
+      <Dialog as="div" className="relative z-50" onClose={onClose}>
+        {/* Backdrop (liquid glass effect) */}
+        <Transition.Child
+          as={Fragment}
+          enter="ease-out duration-300"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="ease-in duration-200"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" />
+        </Transition.Child>
 
-        <div className="p-6 space-y-6">
-          {/* Role */}
-          <div>
-            <h3 className="text-lg font-semibold text-[#81E7AF] mb-2">My Role : <span className="text-gray-300">{project.role}</span></h3>
-            
-          </div>
-
-          {/* Project Image */}
-          <div>
-            <img
-              src={project.image || "/placeholder.svg"}
-              alt={project.title}
-              className="w-full h-64 object-contain rounded-lg border border-gray-700"
-            />
-          </div>
-
-          {/* Description */}
-          <div>
-            <h3 className="text-lg font-semibold text-[#81E7AF] mb-2">Description</h3>
-            <p className="text-gray-300 leading-relaxed">{project.description}</p>
-          </div>
-
-          {/* GitHub Link */}
-          <div className="flex flex-wrap gap-4">
-            <a
-              href={project.githubLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center space-x-3 bg-gray-300 white text-black font-semibold py-3 px-6 rounded-lg hover:bg-white transition-colors"
+        <div className="fixed inset-0 overflow-y-auto">
+          <div className="flex min-h-full items-center justify-center p-4 text-center">
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0 scale-95"
+              enterTo="opacity-100 scale-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100 scale-100"
+              leaveTo="opacity-0 scale-95"
             >
-              <Github className="w-5 h-5" />
-              <span>View on GitHub</span>
-              <ExternalLink className="w-4 h-4" />
-            </a>
+              <Dialog.Panel className="w-full max-w-4xl max-h-[90vh] overflow-y-auto transform rounded-2xl 
+                                       bg-black/10 backdrop-blur-xl border border-gray-700 
+                                       shadow-2xl shadow-black/70 p-0 text-left align-middle transition-all">
+                {/* Modal Header */}
+                <div className="flex justify-between items-center p-6 border-b border-gray-700">
+                  <Dialog.Title as="h2" className="text-3xl font-bold text-[#81E7AF]">
+                    {project.title}
+                  </Dialog.Title>
+                  <button
+                    onClick={onClose}
+                    className="text-gray-400 hover:text-white transition-colors p-2 rounded-full hover:bg-white/10"
+                  >
+                    <X className="w-6 h-6" />
+                  </button>
+                </div>
 
-            {project.liveLink && (
-            <a
-              href={project.liveLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center space-x-2 bg-[#81E7AF] text-black font-semibold py-3 px-6 rounded-lg hover:bg-[#caff5f] transition-colors"
-            >
-              <span>Live Demo</span>
-              <ExternalLink className="w-5 h-5" />
-            </a>
-          )}
-          </div>
+                {/* Modal Body */}
+                <div className="p-6 space-y-6">
+                  {/* Role */}
+                  <div>
+                    <h3 className="text-lg font-semibold text-[#81E7AF] mb-1">My Role</h3>
+                    <p className="text-gray-300">{project.role}</p>
+                  </div>
 
-          {/* Technologies */}
-          <div>
-            <h3 className="text-lg font-semibold text-[#81E7AF] mb-3">Technologies Used</h3>
-            <div className="flex flex-wrap gap-2">
-              {project.technologies.map((tech, index) => (
-                <span key={index} className="bg-gray-300 text-black px-3 py-1 rounded-full text-sm font-medium">
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </div>
+                  {/* Project Image (Optimized with Next.js Image) */}
+                  <div className="relative w-full h-64 rounded-lg overflow-hidden border border-gray-700">
+                    <Image
+                      src={project.image || "/placeholder.svg"}
+                      alt={project.title}
+                      layout="fill"
+                      objectFit="cover" // Use "contain" if you prefer the image not to be cropped
+                      quality={80}
+                      className="transition-transform duration-300 hover:scale-105"
+                    />
+                  </div>
 
-          {/* Tools */}
-          <div>
-            <h3 className="text-lg font-semibold text-[#81E7AF] mb-3">Tools Used</h3>
-            <div className="flex flex-wrap gap-2">
-              {project.tools.map((tool, index) => (
-                <span
-                  key={index}
-                  className="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-sm border border-gray-600"
-                >
-                  {tool}
-                </span>
-              ))}
-            </div>
+                  {/* Description */}
+                  <div>
+                    <h3 className="text-lg font-semibold text-[#81E7AF] mb-2">Description</h3>
+                    <p className="text-gray-300 leading-relaxed">{project.description}</p>
+                  </div>
+
+                  {/* Links */}
+                  <div className="flex flex-wrap gap-4">
+                    <a
+                      href={project.githubLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center space-x-3 bg-gray-700/50 text-white font-semibold py-3 px-6 rounded-lg 
+                                 hover:bg-gray-600/70 hover:text-[#81E7AF] transition-all duration-300 border border-gray-600"
+                    >
+                      <Github className="w-5 h-5" />
+                      <span>View on GitHub</span>
+                      <ExternalLink className="w-4 h-4" />
+                    </a>
+
+                    {project.liveLink && (
+                      <a
+                        href={project.liveLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center space-x-2 bg-[#81E7AF]/80 text-black font-semibold py-3 px-6 rounded-lg 
+                                   hover:bg-[#81E7AF] transition-colors duration-300 shadow-md"
+                      >
+                        <span>Live Demo</span>
+                        <ExternalLink className="w-5 h-5" />
+                      </a>
+                    )}
+                  </div>
+
+                  {/* Technologies */}
+                  <div>
+                    <h3 className="text-lg font-semibold text-[#81E7AF] mb-3">Technologies Used</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {project.technologies.map((tech, index) => (
+                        <span
+                          key={index}
+                          className="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-sm border border-gray-600"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Tools */}
+                  <div>
+                    <h3 className="text-lg font-semibold text-[#81E7AF] mb-3">Tools Used</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {project.tools.map((tool, index) => (
+                        <span
+                          key={index}
+                          className="bg-gray-800 text-gray-300 px-3 py-1 rounded-full text-sm border border-gray-600"
+                        >
+                          {tool}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </Dialog.Panel>
+            </Transition.Child>
           </div>
         </div>
-      </div>
-    </div>
+      </Dialog>
+    </Transition>
   )
 }

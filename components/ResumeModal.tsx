@@ -33,9 +33,9 @@ export default function ResumeModal({ isOpen, onClose, resumeUrl }) {
             leaveTo="opacity-0 scale-95"
           >
             {/* The modal panel */}
-            <Dialog.Panel className="w-full max-w-4xl h-[90vh] transform overflow-hidden rounded-2xl bg-black text-left align-middle shadow-xl transition-all flex flex-col border-1 border-gray-800">
-              <div className="flex justify-between items-center p-4 bg-gradient-to-r from-black to-gray-900">
-                <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-white">
+            <Dialog.Panel className="w-full max-w-4xl h-[90vh] transform overflow-hidden rounded-2xl bg-black/10 backdrop-blur-xl text-left align-middle shadow-xl transition-all flex flex-col border-1 border-gray-800">
+              <div className="flex justify-between items-center p-4  bg-black/50 backdrop-blur-sm">
+                <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-white ">
                   Resume Preview
                 </Dialog.Title>
                 <button

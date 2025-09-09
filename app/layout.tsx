@@ -20,7 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${poppins.variable} ${jetbrainsMono.variable} scroll-smooth`}>
-      <body className="antialiased font-inter relative">
+      <body className="antialiased font-inter  relative">
         {/* Background video */}
         <video
           autoPlay

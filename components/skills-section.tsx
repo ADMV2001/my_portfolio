@@ -130,7 +130,7 @@ export default function SkillsSection() {
         </div>
 
         {/* Education (unchanged) */}
-        <div className="rounded-[35px] bg-white/5 backdrop-blur-xl border border-gray-700 shadow-lg p-6 px-8 py-8">
+        <div className="rounded-[25px] bg-white/5 backdrop-blur-xl border border-gray-700 shadow-lg p-6 px-8 py-8">
           <h3 className="text-[25px] font-semibold mb-14 text-gray-300 text-center">
             Education
           </h3>
