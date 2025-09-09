@@ -117,8 +117,8 @@ export default function SkillsSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
           {skillGroups.map((group, idx) => (
             <div key={idx} className="space-y-6 p-4 px-8 rounded-[35px] bg-gradient-to-t from-black to-gray-900">
-              <h3 className="text-xl font-semibold text-[#81E7AF] text-center">
-                {group.title}
+              <h3 className="text-[21px] font-semibold text-[#81E7AF] text-left ml-[10px] mb-8">
+                {group.title} 
               </h3>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                 {group.skills.map((skill, i) => (
@@ -131,7 +131,7 @@ export default function SkillsSection() {
 
         {/* Education (unchanged) */}
         <div className="rounded-[35px] bg-gradient-to-t from-black to-gray-900 p-8 border border-gray-800 shadow-sm">
-          <h3 className="text-xl font-semibold mb-8 text-[#81E7AF] text-center">
+          <h3 className="text-[22px] font-semibold mb-8 text-[#81E7AF] text-center">
             Education
           </h3>
           <div className="space-y-8">
