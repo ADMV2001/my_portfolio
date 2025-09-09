@@ -125,7 +125,7 @@ export default function SkillsSection() {
         </div>
 
         {/* Education (unchanged) */}
-        <div className="rounded-2xl bg-gray-900/70 p-8 border border-gray-800 shadow-sm">
+        <div className="rounded-[35px] bg-gradient-to-t from-black to-gray-900 p-8 border border-gray-800 shadow-sm">
           <h3 className="text-xl font-semibold mb-8 text-[#AAFF00] text-center">
             Education
           </h3>
@@ -152,7 +152,7 @@ export default function SkillsSection() {
                     <h4 className="text-lg font-semibold text-white">
                       {edu.institution}
                     </h4>
-                    <span className="text-[#AAFF00] font-medium">{edu.years}</span>
+                    <span className="text-gray-300 font-medium">{edu.years}</span>
                   </div>
                   <p className="text-gray-300 mb-1">{edu.degree}</p>
                   <p className="text-gray-400">{edu.grade}</p>
