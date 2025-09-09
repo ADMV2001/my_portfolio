@@ -9,10 +9,14 @@ import ProjectsSection from "@/components/projects-section"
 import SkillsSection from "@/components/skills-section"
 import ContactSection from "@/components/contact-section"
 
+
 import Image from "next/image";
+
+import ChatModal from "@/components/chatModel";
 
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("home")
+  const [isChatOpen, setIsChatOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -68,16 +72,18 @@ export default function Portfolio() {
 
       {/* Fixed Chatbot Icon */}
       <div className="fixed bottom-6 right-6 z-50">
-        <button className="relative w-18 h-18 rounded-full backdrop-blur-lg text-black cursor-pointer hover:scale-110 shadow-2xl transition-all duration-300 flex items-center justify-center p-2">
+        <button className="relative w-18 h-18 rounded-full backdrop-blur-lg text-black cursor-pointer hover:scale-110 shadow-2xl transition-all duration-300 flex items-center justify-center p-2"
+          onClick={() => setIsChatOpen(true)}>
           <Image
             src="/bot.png"
             alt="Chatbot Icon"
-            layout="fill" // Makes the image fill the parent
-            objectFit="contain" // Ensures the whole image is visible
-            className="rounded-full p-2" // Add padding to keep the image slightly smaller than the button
+            layout="fill" 
+            objectFit="contain" 
+            className="rounded-full p-2"
           />
         </button>
       </div>
+      <ChatModal isOpen={isChatOpen} onClose={() => setIsChatOpen(false)} />
     </div>
   )
 }
