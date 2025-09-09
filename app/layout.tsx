@@ -31,7 +31,7 @@ export default function RootLayout({
         >
           <source src="/back.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-black/65 -z-10" />
+        <div className="absolute inset-0 bg-black/75 -z-10" />
         {children}
       </body>
     </html>

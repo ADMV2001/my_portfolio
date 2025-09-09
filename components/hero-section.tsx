@@ -46,9 +46,9 @@ export default function HeroSection() {
           <div className="space-y-8">
             {/* Avatar and Info */}
             <div className="flex flex-col items-center text-center space-y-4">
-              <div className="w-32 h-32 bg-black rounded-full border-2 border-black overflow-hidden">
+              <div className="w-36 h-36 bg-black rounded-full border-2 border-black overflow-hidden">
                 <Image
-                  src="/profile-pic.jpg"
+                  src="/minula.png"
                   alt="Minula Vihanga"
                   width={96}
                   height={96}
@@ -78,7 +78,7 @@ export default function HeroSection() {
               <a
                 href="/Minula_Vihanga_Resume.pdf"
                 download="Minula_Vihanga_Resume.pdf"
-                className="w-full bg-[#81E7AF]/60 backdrop-blur-sm text-white font-semibold py-5 px-8 rounded-[20px] hover:bg-[#81E7AF] hover:text-black transition-colors flex items-center justify-center space-x-3 cursor-pointer"
+                className="w-full bg-[#81E7AF] text-black font-semibold py-5 px-8 rounded-[20px] hover:bg-[#81E7AF] hover:text-black transition-colors flex items-center justify-center space-x-3 cursor-pointer"
               >
                 <Download className="w-6 h-6" />
                 <span className="text-lg">Download Resume</span>

@@ -1,5 +1,6 @@
 "use client"
 import { useState } from "react"
+import Image from "next/image";
 
 interface HeaderProps {
   activeSection: string
@@ -19,10 +20,15 @@ export default function Header({ activeSection, scrollToSection }: HeaderProps) 
             onClick={() => scrollToSection("home")}
             className="flex items-center space-x-3"
           >
-            <div className="w-8 h-8 bg-[#81E7AF] rounded-full flex items-center justify-center">
-              <span className="text-black font-bold text-sm">MV</span>
+            <div className="w-9 h-9 relative">
+              <Image
+                src="/name-logo.png" // Path to your logo in the /public folder
+                alt="Minula Vihanga Logo"
+                layout="fill"
+                className="rounded-full" // Keeps the circular shape
+              />
             </div>
-            <span className="font-semibold text-white text-[20px]">Minula Vihanga</span>
+            <span className="font-semibold text-white text-[20px] tracking-wider">Minula Vihanga</span>
           </button>
 
           {/* Desktop Menu */}

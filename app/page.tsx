@@ -9,14 +9,14 @@ import ProjectsSection from "@/components/projects-section"
 import SkillsSection from "@/components/skills-section"
 import ContactSection from "@/components/contact-section"
 
-
 import Image from "next/image";
-
 import ChatModal from "@/components/chatModel";
+import LoadingPage from "@/components/landingPage";
 
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("home")
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -52,6 +52,10 @@ export default function Portfolio() {
         behavior: "smooth",
       })
     }
+  }
+
+  if (isLoading) {
+    return <LoadingPage onLoadingComplete={() => setIsLoading(false)} />;
   }
 
   return (
