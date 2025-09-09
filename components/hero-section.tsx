@@ -46,7 +46,7 @@ export default function HeroSection() {
           <div className="space-y-8">
             {/* Avatar and Info */}
             <div className="flex flex-col items-center text-center space-y-4">
-              <div className="w-36 h-36 bg-black rounded-full border-2 border-black overflow-hidden">
+              <div className="w-48 h-48 bg-black rounded-full border-2 border-black overflow-hidden">
                 <Image
                   src="/minula.png"
                   alt="Minula Vihanga"
