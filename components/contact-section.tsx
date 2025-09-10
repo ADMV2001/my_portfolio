@@ -75,6 +75,7 @@ export default function ContactSection() {
                 </div>
 
                 <div className="space-y-4">
+                  <a href="mailto:minulavihanga70@gmail.com" target="_blank" rel="noopener noreferrer" className="mb-4 block">
                   <div className="group flex items-center space-x-3 p-3 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105">
                     <div className="p-2 rounded-lg bg-gradient-to-br from-[#81E7AF]/20 to-[#81E7AF]/5 group-hover:from-[#81E7AF]/30 group-hover:to-[#81E7AF]/10 transition-all duration-300">
                       <Mail className="w-5 h-5 text-[#81E7AF]" />
@@ -84,26 +85,32 @@ export default function ContactSection() {
                       <span className="text-white text-sm font-medium">minulavihanga70@gmail.com</span>
                     </div>
                   </div>
+                  </a>
 
-                  <div className="group flex items-center space-x-3 p-3 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105">
+                  <a href="https://github.com/ADMV2001" target="_blank" rel="noopener noreferrer" className="mb-4 block">
+                    <div className="cursor-pointer group flex items-center space-x-3 p-3 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105">
                     <div className="p-2 rounded-lg bg-gradient-to-br from-[#81E7AF]/20 to-[#81E7AF]/5 group-hover:from-[#81E7AF]/30 group-hover:to-[#81E7AF]/10 transition-all duration-300">
                       <Github className="w-5 h-5 text-[#81E7AF]" />
                     </div>
                     <div>
                       <p className="text-xs text-gray-400 uppercase tracking-wide">GitHub</p>
-                      <span className="text-white text-sm font-medium">github.com/minula</span>
+                      <span className="text-white text-sm font-medium">github.com/ADMV2001</span>
                     </div>
                   </div>
-
-                  <div className="group flex items-center space-x-3 p-3 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105">
+                  </a>
+                  
+                  <a href="https://www.linkedin.com/in/minula-vihanga-9031b4293" target="_blank" rel="noopener noreferrer" className="mb-4 block">
+                    <div className="group flex items-center space-x-3 p-3 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105">
                     <div className="p-2 rounded-lg bg-gradient-to-br from-[#81E7AF]/20 to-[#81E7AF]/5 group-hover:from-[#81E7AF]/30 group-hover:to-[#81E7AF]/10 transition-all duration-300">
                       <Linkedin className="w-5 h-5 text-[#81E7AF]" />
                     </div>
                     <div>
                       <p className="text-xs text-gray-400 uppercase tracking-wide">LinkedIn</p>
-                      <span className="text-white text-sm font-medium">linkedin.com/in/minula</span>
+                      <span className="text-white text-sm font-medium">linkedin.com/in/minula-vihanga</span>
                     </div>
                   </div>
+                  </a>
+                  
 
                   <div className="group flex items-center space-x-3 p-3 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300 hover:scale-105">
                     <div className="p-2 rounded-lg bg-gradient-to-br from-[#81E7AF]/20 to-[#81E7AF]/5 group-hover:from-[#81E7AF]/30 group-hover:to-[#81E7AF]/10 transition-all duration-300">
@@ -111,7 +118,7 @@ export default function ContactSection() {
                     </div>
                     <div>
                       <p className="text-xs text-gray-400 uppercase tracking-wide">Location</p>
-                      <span className="text-white text-sm font-medium">Sri Lanka</span>
+                      <span className="text-white text-sm font-medium">Horana, Sri Lanka</span>
                     </div>
                   </div>
                 </div>
