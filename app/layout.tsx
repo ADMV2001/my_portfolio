@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   description: "The personal portfolio of Minula Vihanga, a software developer and AI enthusiast specializing in React, Next.js, and modern web technologies. View my projects and skills.",
   keywords: ["Minula Vihanga", "Software Developer", "Portfolio", "React Developer", "Next.js", "AI Enthusiast", "Sri Lanka"],
   authors: [{ name: "Minula Vihanga" }],
+  verification: {
+    google: 'GLVonuKIKsAPNcGSkFuBMmyzadWI4wInK8fxCIZoxkQ'
+  }
 }
 
 export default function RootLayout({
