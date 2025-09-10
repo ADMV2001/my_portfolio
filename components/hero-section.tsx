@@ -135,7 +135,7 @@ export default function HeroSection() {
             </p>
 
             {/* Social Links */}
-            <div className="fhidden md:flex space-x-6 mt-4 cursor-pointer justify-center lg:justify-start mb-4">
+            <div className="hidden md:flex space-x-6 mt-4 cursor-pointer justify-center lg:justify-start mb-4">
               <a href="https://www.linkedin.com/in/minula-vihanga-9031b4293" target="_blank" rel="noopener noreferrer" className="transition-transform duration-300 hover:scale-115">
                 <FaLinkedin className="w-10 h-10 text-gray-300" />
               </a>
