@@ -115,7 +115,7 @@ export default function SkillsSection() {
         </h2>
 
         {/* Skills in groups */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-15">
           {skillGroups.map((group, idx) => (
             <div key={idx} className="space-y-6 p-6 px-8 py-8 rounded-[25px] bg-white/5 backdrop-blur-xl border border-gray-700 shadow-lg">
               <h3 className="text-[21px] font-semibold text-gray-300 text-center ml-[10px] mb-8">

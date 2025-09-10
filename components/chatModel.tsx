@@ -3,7 +3,9 @@
 import { useState, useRef, useEffect, Fragment } from "react";
 import { Dialog, Transition } from '@headlessui/react';
 import { X, Send, Bot, User } from 'lucide-react';
-import ReactMarkdown from 'react-markdown'; // 1. Import ReactMarkdown
+import ReactMarkdown from 'react-markdown';
+
+import Image from "next/image";
 
 interface Message {
   role: 'user' | 'model';
@@ -21,47 +23,69 @@ export default function ChatModal({ isOpen, onClose }: { isOpen: boolean, onClos
   };
 
   useEffect(scrollToBottom, [messages]);
-  
-  // 2. MODIFIED: Handle the initial greeting instantly on the frontend
+
   useEffect(() => {
     if (isOpen && messages.length === 0) {
-      setMessages([{ 
-        role: 'model', 
-        parts: [{ text: "Hi there! I'm Minula's Personal Assistant. Ask me anything about Minula's skills, education, or projects." }] 
-      }]);
+      setMessages([{ role: 'model', parts: [{ text: "Hi there! I'm Minula's Personal AI Assistant. Ask me anything about Minula's skills, education, or projects. What would you like to know?" }] }]);
     }
   }, [isOpen, messages.length]);
 
-  // This effect resets the chat when the modal is closed
   useEffect(() => {
     if (!isOpen) {
       setMessages([]);
     }
   }, [isOpen]);
 
+  // MODIFIED: This function now handles streaming responses
   const handleSend = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!input.trim() || isLoading) return;
 
     const userMessage: Message = { role: 'user', parts: [{ text: input }] };
-    setMessages(prev => [...prev, userMessage]);
+    const newMessages = [...messages, userMessage];
+    setMessages(newMessages);
+    const currentInput = input;
     setInput('');
     setIsLoading(true);
 
     try {
-      const res = await fetch('/api/chat', {
+      const response = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          history: messages,
-          message: input
+          history: messages, // Send history up to the user's message
+          message: currentInput,
         }),
       });
-      const data = await res.json();
-      const botMessage: Message = { role: 'model', parts: [{ text: data.text }] };
-      setMessages(prev => [...prev, botMessage]);
+
+      if (!response.body) {
+        throw new Error("Response body is null");
+      }
+
+      // Prepare for streaming
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let botResponse = '';
+      
+      // Add a placeholder for the bot's message
+      setMessages(prev => [...prev, { role: 'model', parts: [{ text: '' }] }]);
+
+      // Read the stream
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        botResponse += decoder.decode(value, { stream: true });
+        
+        // Update the last message (the bot's response) in real-time
+        setMessages(prev => {
+          const updatedMessages = [...prev];
+          updatedMessages[updatedMessages.length - 1].parts[0].text = botResponse;
+          return updatedMessages;
+        });
+      }
+
     } catch (error) {
-      console.error("Failed to fetch chat response:", error);
+      console.error("Failed to fetch stream response:", error);
       const errorMessage: Message = { role: 'model', parts: [{ text: "Sorry, something went wrong." }] };
       setMessages(prev => [...prev, errorMessage]);
     } finally {
@@ -72,40 +96,34 @@ export default function ChatModal({ isOpen, onClose }: { isOpen: boolean, onClos
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-50" onClose={onClose}>
-        <Transition.Child as={Fragment} enter="ease-out duration-300" enterFrom="opacity-0" enterTo="opacity-100" leave="ease-in duration-200" leaveFrom="opacity-100" leaveTo="opacity-0">
-          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm" />
-        </Transition.Child>
-
-        <div className="fixed inset-0 overflow-y-auto">
+        {/* ... The rest of your modal JSX remains the same ... */}
+        {/* ... Header, Chat Area, Input Area ... */}
+         <div className="fixed inset-0 overflow-y-auto bg-black/20 backdrop-blur-md">
           <div className="flex min-h-full items-center justify-center p-4">
             <Transition.Child as={Fragment} enter="ease-out duration-300" enterFrom="opacity-0 scale-95" enterTo="opacity-100 scale-100" leave="ease-in duration-200" leaveFrom="opacity-100" leaveTo="opacity-0">
               <Dialog.Panel className="w-full max-w-2xl h-[80vh] flex flex-col transform rounded-2xl bg-black/50 backdrop-blur-xl border border-gray-700 shadow-xl transition-all">
-                {/* Header */}
                 <div className="flex items-center justify-between p-4 border-b border-gray-700">
-                  <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-[#81E7AF]">Personal Assistant</Dialog.Title>
-                  <button onClick={onClose} className="p-1 rounded-full hover:bg-white/10"><X className="w-5 h-5 text-gray-400" /></button>
+                  <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-[#81E7AF]">Personal AI Assistant</Dialog.Title>
+                  <button onClick={onClose} className="p-1 rounded-full hover:bg-white/10 cursor-pointer"><X className="w-5 h-5 text-gray-400" /></button>
                 </div>
-                {/* Chat Area */}
                 <div className="flex-grow p-4 overflow-y-auto space-y-4">
                   {messages.map((msg, index) => (
                     <div key={index} className={`flex items-start gap-3 ${msg.role === 'user' ? 'justify-end' : ''}`}>
-                      {msg.role === 'model' && <div className="w-8 h-8 flex-shrink-0 rounded-full bg-[#81E7AF] flex items-center justify-center"><Bot className="w-5 h-5 text-black" /></div>}
+                      {msg.role === 'model' && <div className="relative w-8 h-8 flex-shrink-0 flex items-center justify-center"><Image src="/bot.png" alt="Bot" layout="fill" objectFit="cover" /></div>}
                       <div className={`prose prose-invert px-4 py-2 rounded-lg max-w-xs sm:max-w-sm md:max-w-md ${msg.role === 'user' ? 'bg-[#81E7AF] text-black prose-p:text-black prose-strong:text-black' : 'bg-gray-700 text-white'}`}>
-                        {/* 3. MODIFIED: Use ReactMarkdown to render the response */}
                         <ReactMarkdown>{msg.parts[0].text}</ReactMarkdown>
                       </div>
                       {msg.role === 'user' && <div className="w-8 h-8 flex-shrink-0 rounded-full bg-gray-600 flex items-center justify-center"><User className="w-5 h-5 text-white" /></div>}
                     </div>
                   ))}
-                   {isLoading && (
+                   {isLoading && messages[messages.length-1]?.role !== 'model' && (
                     <div className="flex items-start gap-3">
-                      <div className="w-8 h-8 flex-shrink-0 rounded-full bg-[#81E7AF] flex items-center justify-center"><Bot className="w-5 h-5 text-black" /></div>
-                      <div className="px-4 py-2 rounded-lg bg-gray-700 text-white">Typing...</div>
+                      <div className="relative w-8 h-8 flex-shrink-0 rounded-full flex items-center justify-center"><Image src="/bot.png" alt="Bot" layout="fill" objectFit="cover" /></div>
+                      <div className="px-4 py-2 rounded-lg bg-gray-700 text-white">...</div>
                     </div>
                   )}
                   <div ref={chatEndRef} />
                 </div>
-                {/* Input Area */}
                 <div className="p-4 border-t border-gray-700">
                   <form onSubmit={handleSend} className="flex items-center gap-3">
                     <input
