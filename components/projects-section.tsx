@@ -58,7 +58,7 @@ export default function ProjectsSection() {
     {
       title: "Feedback and Sentiment Analysis - Multi AI Agent System",
       role: "Personal Project",
-      image: "/preview/project4.png",
+      image: "/graph.png",
       shortDescription: "Automated Restaurant Feedback Multi-Agent System – An AI-powered solution that analyzes customer reviews and generates personalized replies while visualizing sentiment trends. Built with LangChain, LangGraph, and Groq API for hands-on multi-agent experience.",
       description:
         "This project explores the power of multi-agent AI systems by combining language model intelligence with data-driven insights. The Feedback Agent analyzes customer reviews from a Kaggle dataset and generates polite, personalized responses, while the Visualization Agent plots sentiment patterns over time to help restaurants understand customer feedback. Built using Python, LangChain, LangGraph, Groq API, Pandas, and Seaborn, this system gave me practical experience in designing end-to-end AI workflows for real-world applications.",

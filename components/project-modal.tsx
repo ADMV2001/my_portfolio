@@ -71,7 +71,7 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                                        shadow-2xl shadow-black/70 p-0 text-left align-middle transition-all">
                 {/* Modal Header */}
                 <div className="flex justify-between items-center p-6 border-b border-gray-700">
-                  <Dialog.Title as="h2" className="text-3xl font-bold text-[#81E7AF]">
+                  <Dialog.Title as="h2" className="text-3xl font-semibold text-[#81E7AF]">
                     {project.title}
                   </Dialog.Title>
                   <button
@@ -86,8 +86,7 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                 <div className="p-6 space-y-6">
                   {/* Role */}
                   <div>
-                    <h3 className="text-lg font-semibold text-[#81E7AF] mb-1">My Role</h3>
-                    <p className="text-gray-300">{project.role}</p>
+                    <h3 className="text-md  text-[#81E7AF] mb-1">My Role: <span className="text-gray-300">{project.role}</span></h3>
                   </div>
 
                   {/* Project Image (Optimized with Next.js Image) */}
@@ -96,7 +95,7 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                       src={project.image || "/placeholder.svg"}
                       alt={project.title}
                       layout="fill"
-                      objectFit="contain" // Use "contain" if you prefer the image not to be cropped
+                      objectFit="co" // Use "contain" if you prefer the image not to be cropped
                       quality={80}
                       className="transition-transform duration-300 hover:scale-105"
                     />
@@ -104,7 +103,7 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
 
                   {/* Description */}
                   <div>
-                    <h3 className="text-lg font-semibold text-[#81E7AF] mb-2">Description</h3>
+                    <h3 className="text-md  text-[#81E7AF] mb-2">Description</h3>
                     <p className="text-gray-300 leading-relaxed">{project.description}</p>
                   </div>
 
@@ -138,7 +137,7 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
 
                   {/* Technologies */}
                   <div>
-                    <h3 className="text-lg font-semibold text-[#81E7AF] mb-3">Technologies Used</h3>
+                    <h3 className="text-md text-[#81E7AF] mb-3">Technologies Used</h3>
                     <div className="flex flex-wrap gap-2">
                       {project.technologies.map((tech, index) => (
                         <span
@@ -153,7 +152,7 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
 
                   {/* Tools */}
                   <div>
-                    <h3 className="text-lg font-semibold text-[#81E7AF] mb-3">Tools Used</h3>
+                    <h3 className="text-md text-[#81E7AF] mb-3">Tools Used</h3>
                     <div className="flex flex-wrap gap-2">
                       {project.tools.map((tool, index) => (
                         <span

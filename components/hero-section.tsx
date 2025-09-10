@@ -83,6 +83,25 @@ export default function HeroSection() {
                 <Download className="w-6 h-6" />
                 <span className="text-lg">Download Resume</span>
               </a>
+
+              <div className="md:hidden flex space-x-6 mt-8 ml-3 cursor-pointer justify-center lg:justify-start mb-4">
+              <a href="https://www.linkedin.com/in/minula-vihanga-9031b4293" target="_blank" rel="noopener noreferrer" className="transition-transform duration-300 hover:scale-115">
+                <FaLinkedin className="w-10 h-10 text-gray-300" />
+              </a>
+              <a href="https://github.com/ADMV2001" target="_blank" rel="noopener noreferrer" className="transition-transform duration-300 hover:scale-115">
+                <FaSquareGithub className="w-10 h-10 text-gray-300" />
+              </a>
+              <a href="https://www.instagram.com/minula_v" target="_blank" rel="noopener noreferrer" className="transition-transform duration-300 hover:scale-115">
+                <FaSquareInstagram className="w-10 h-10 text-gray-300" />
+              </a>
+              <a href="https://www.facebook.com/share/19vF2UFrbY/" target="_blank" rel="noopener noreferrer" className="transition-transform duration-300 hover:scale-115">
+                <FaFacebookSquare className="w-10 h-10 text-gray-300" />
+              </a>
+              <a href="mailto:minulavihanga70@gmail.com" target="_blank" rel="noopener noreferrer" className="transition-transform duration-300 hover:scale-115">
+                <ImMail className="w-[34px] h-10 text-gray-300" />
+              </a>
+            </div>
+              
               <button
                 onClick={openModal}
                 className="w-full border-[0.5px] border-[#81E7AF] text-[#81E7AF] font-semibold py-5 px-8 rounded-[20px] hover:bg-white hover:border-0 hover:text-black transition-colors text-lg cursor-pointer hidden md:block"
@@ -100,7 +119,7 @@ export default function HeroSection() {
           </div>
 
           <div className="text-lg ml-3 lg:ml-0">
-            <p className="font-jetbrains mt-2 text-sm sm:text-base leading-6 bg-black/70 text-[#d4d4d4] p-4 rounded-lg shadow-lg overflow-x-auto">
+            <p className="font-jetbrains mt-2 text-sm sm:text-base leading-6  text-[#d4d4d4] p-4 rounded-lg shadow-lg overflow-x-auto">
               <span className="text-[#C586C0]">class</span> Minula <span className="text-[#C586C0]">extends</span> Developer {"{"} <br />
               &nbsp;&nbsp;<span className="text-[#C586C0]">constructor</span>() {"{"} <br />
               &nbsp;&nbsp;&nbsp;&nbsp;<span className="text-[#C586C0]">super</span>(); <br />
@@ -116,7 +135,7 @@ export default function HeroSection() {
             </p>
 
             {/* Social Links */}
-            <div className="flex space-x-6 mt-4 ml-3 cursor-pointer justify-center lg:justify-start">
+            <div className="fhidden md:flex space-x-6 mt-4 cursor-pointer justify-center lg:justify-start mb-4">
               <a href="https://www.linkedin.com/in/minula-vihanga-9031b4293" target="_blank" rel="noopener noreferrer" className="transition-transform duration-300 hover:scale-115">
                 <FaLinkedin className="w-10 h-10 text-gray-300" />
               </a>
