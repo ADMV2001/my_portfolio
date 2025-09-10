@@ -8,9 +8,10 @@ const poppins = Poppins({ weight: ["400", "600", "700"], subsets: ["latin"], var
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], weight: ["400", "600", "700"], variable: "--font-jetbrains" });
 
 export const metadata: Metadata = {
-  title: "Minula Vihanga",
-  description: "Software Engineer Portfolio",
-    generator: 'v0.app'
+  title: "Minula Vihanga | Software Developer Portfolio",
+  description: "The personal portfolio of Minula Vihanga, a software developer and AI enthusiast specializing in React, Next.js, and modern web technologies. View my projects and skills.",
+  keywords: ["Minula Vihanga", "Software Developer", "Portfolio", "React Developer", "Next.js", "AI Enthusiast", "Sri Lanka"],
+  authors: [{ name: "Minula Vihanga" }],
 }
 
 export default function RootLayout({
