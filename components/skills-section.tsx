@@ -99,12 +99,13 @@ export default function SkillsSection() {
   name: string;
 };
 
-  const SkillCard = ({ icon, name }: SkillCardProps) => (
-    <div className="w-[130px] flex flex-col items-center justify-center p-4 rounded-[25px] bg-gray-100/5 hover:bg-gray-700/70 shadow-sm hover:shadow-md transition-all duration-300">
-      <div className="text-2xl text-[#81E7AF] mb-2">{icon}</div>
-      <span className="text-gray-200 text-sm text-center">{name}</span>
+    const SkillCard = ({ icon, name }: SkillCardProps) => (
+    <div className="flex flex-col items-center justify-center p-2 sm:p-3 md:p-4 rounded-xl sm:rounded-[20px] bg-gray-100/5 hover:bg-gray-700/70 shadow-sm hover:shadow-md transition-all duration-300 min-h-[80px] sm:min-h-[100px]">
+      <div className="text-2xl sm:text-3xl text-[#81E7AF] mb-1 sm:mb-2 flex items-center justify-center">{icon}</div>
+      <span className="text-gray-200 text-xs sm:text-sm text-center leading-tight px-1">{name}</span>
     </div>
-  );
+  )
+
 
   return (
     <section id="skills" className="py-20 px-6 ">
@@ -120,7 +121,7 @@ export default function SkillsSection() {
               <h3 className="text-[21px] font-semibold text-gray-300 text-center ml-[10px] mb-8">
                 {group.title} 
               </h3>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3 lg:gap-4">
                 {group.skills.map((skill, i) => (
                   <SkillCard key={i} icon={skill.icon} name={skill.name} />
                 ))}

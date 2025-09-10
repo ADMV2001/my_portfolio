@@ -56,20 +56,20 @@ export default function HeroSection() {
                 />
               </div>
               <div>
-                <h2 className="text-4xl font-semibold text-white">Minula Vihanga</h2>
-                <p className="text-gray-300 text-l mt-2">Software Developer | AI Enthusiast</p>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-white">Minula Vihanga</h2>
+                <p className="text-sm sm:text-base md:text-lg text-gray-300 mt-2">Software Developer | AI Enthusiast</p>
               </div>
             </div>
 
             {/* Contact Info */}
-            <div className="space-y-4">
-              <div className="flex items-center space-x-4 text-gray-300 text-lg">
-                <Mail className="w-6 h-6 text-[#81E7AF]" />
-                <span>minulavihanga70@gmail.com</span>
+            <div className="space-y-2 ">
+              <div className="flex items-center space-x-2 text-gray-300 text-lg justify-center">
+                <Mail className="w-4 h-6 text-[#81E7AF]" />
+                <span className="text-[15px]">minulavihanga70@gmail.com</span>
               </div>
-              <div className="flex items-center space-x-4 text-gray-300 text-lg">
-                <MapPin className="w-6 h-6 text-[#81E7AF]" />
-                <span>Horana, Sri Lanka</span>
+              <div className="flex items-center space-x-2 text-gray-300 text-lg justify-center">
+                <MapPin className="w-4 h-6 text-[#81E7AF]" />
+                <span className="text-[15px]">Horana, Sri Lanka</span>
               </div>
             </div>
 
@@ -78,7 +78,7 @@ export default function HeroSection() {
               <a
                 href="/Minula_Vihanga_Resume.pdf"
                 download="Minula_Vihanga_Resume.pdf"
-                className="w-full bg-[#81E7AF] text-black font-semibold py-5 px-8 rounded-[20px] hover:bg-[#81E7AF] hover:text-black transition-colors flex items-center justify-center space-x-3 cursor-pointer"
+                className="w-full bg-[#81E7AF] text-black font-semibold py-3 px-5 sm:py-4 sm:px-6 md:py-5 md:px-8 rounded-[20px] hover:bg-gray-200 hover:text-black transition-colors flex items-center justify-center space-x-3 cursor-pointer"
               >
                 <Download className="w-6 h-6" />
                 <span className="text-lg">Download Resume</span>
