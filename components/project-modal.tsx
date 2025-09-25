@@ -94,7 +94,7 @@ export default function ProjectModal({ project, isOpen, onClose }: ProjectModalP
                     <Image
                       src={project.image || "/placeholder.svg"}
                       alt={project.title}
-                      layout="fill"
+                      layout="contain"
                       objectFit="co" // Use "contain" if you prefer the image not to be cropped
                       quality={80}
                       className="transition-transform duration-300 hover:scale-105"
